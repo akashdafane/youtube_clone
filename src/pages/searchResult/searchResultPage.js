@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import Videos from './videos';
 
 const SearchResultPage = () => {
-  const result = useSelector((state) => state?.searchResult?.searchResults);
+  const result = useSelector(
+    (state) => state?.searchResult?.searchResults || [],
+  );
 
   let navigate = useNavigate();
 

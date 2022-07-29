@@ -10,7 +10,6 @@ const VideoCardPage = ({
   channel,
   views,
   timestamp,
-  channelImage,
   id,
 }) => {
   const dispatch = useDispatch();

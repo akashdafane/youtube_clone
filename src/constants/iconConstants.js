@@ -19,6 +19,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import ClearIcon from '@mui/icons-material/Clear';
+
 export {
   MenuSharpIcon,
   SearchIcon,
@@ -36,4 +38,5 @@ export {
   ThumbUpOffAltIcon,
   ExpandMoreIcon,
   MoreVertIcon,
+  ClearIcon,
 };

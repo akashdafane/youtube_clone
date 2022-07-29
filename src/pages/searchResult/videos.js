@@ -2,6 +2,7 @@ import React from 'react';
 import { VideoPlayer } from '../../components';
 import '../../styles/videos.css';
 
+
 const Videos = ({ id, title, description, handleNavigation }) => {
   return (
     <div>

@@ -27,7 +27,7 @@ const SearchBar = () => {
   };
 
   const onSearch = (searchTerm) => {
-    if (searchTerm.length > 0) {
+    if (searchTerm?.length > 0) {
       setValue(searchTerm);
       dispatch(getSearchResult(searchTerm));
       navigate('/search');

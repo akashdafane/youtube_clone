@@ -21,6 +21,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import ClearIcon from '@mui/icons-material/Clear';
 
+import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
+
 export {
   MenuSharpIcon,
   SearchIcon,
@@ -39,4 +41,5 @@ export {
   ExpandMoreIcon,
   MoreVertIcon,
   ClearIcon,
+  WatchLaterOutlinedIcon,
 };

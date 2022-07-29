@@ -1,19 +1,31 @@
-import React from 'react';
-import { IncrementCount, DecrementCount } from '../../actions/countAction';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useRef } from 'react';
+import { Popover } from '../../components/index';
+import { MoreVertIcon } from '../../constants/iconConstants';
 
 const WatchLaterPage = () => {
-  const count = useSelector((state) => state?.count);
-  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const [target, setTarget] = useState(null);
+  const ref = useRef(null);
+
+  const handleClick = (event) => {
+    setShow(!show);
+    setTarget(event.target);
+  };
+
+  const handleNavigate = () => {
+    setShow(false);
+  };
+
   return (
     <div>
-      <button type="button" onClick={() => dispatch(IncrementCount())}>
-        +
-      </button>
-      <h1>{count}</h1>
-      <button type="button" onClick={() => dispatch(DecrementCount())}>
-        -
-      </button>
+      <Popover
+        handleClick={handleClick}
+        show={show}
+        target={target}
+        ref={ref}
+        handleNavigate={handleNavigate}
+        icon={<MoreVertIcon />}
+      />
     </div>
   );
 };

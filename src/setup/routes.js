@@ -7,6 +7,7 @@ import {
   PageNotFound,
   WatchVideo,
   WatchLater,
+  SearchResult,
 } from '../pages/index';
 
 const Routing = () => {
@@ -43,6 +44,14 @@ const Routing = () => {
           element={
             <UserLayout>
               <WatchVideo />
+            </UserLayout>
+          }
+        />
+         <Route
+          path="/search"
+          element={
+            <UserLayout>
+              <SearchResult />
             </UserLayout>
           }
         />

@@ -10,6 +10,8 @@ const WatchVideoPage = () => {
         width={'1220'}
         height={'680'}
         src={`https://www.youtube.com/embed/${id}`}
+        title={id}
+        allowFullScreen={true}
       />
     </div>
   );

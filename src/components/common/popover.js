@@ -24,9 +24,11 @@ const CustomPopover = ({
         containerPadding={20}>
         <Popover id="popover-contained">
           <Popover.Header as="h3">{headerTitle}</Popover.Header>
-          <Popover.Body onClick={handleNavigate}>
+          <div onClick={handleNavigate}>
+          <Popover.Body >
             {listIcon} <strong>{listItemName}</strong>
           </Popover.Body>
+          </div>
         </Popover>
       </Overlay>
     </div>

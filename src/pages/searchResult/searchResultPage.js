@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Videos from './videos';
 
-
 const SearchResultPage = () => {
   const result = useSelector(
     (state) => state?.searchResult?.searchResults || [],
@@ -21,12 +20,12 @@ const SearchResultPage = () => {
         result?.length > 0 &&
         result.map((value) => (
           <>
-          <Videos
-            handleNavigation={handleNavigation}
-            id={value?.id?.videoId}
-            title={value?.snippet?.title}
-            description={value?.snippet?.description}
-          />
+            <Videos
+              handleNavigation={handleNavigation}
+              id={value?.id?.videoId}
+              title={value?.snippet?.title}
+              description={value?.snippet?.description}
+            />
           </>
         ))}
     </div>

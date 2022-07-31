@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddChanelId } from '../../actions/addHistory';
+import { WatchLaterData } from '../../actions/watchLater';
 import { useNavigate } from 'react-router-dom';
 import { Popover } from '../../components';
 import {
@@ -21,18 +22,18 @@ const VideoCardPage = ({ image, title, channel, views, timestamp, id }) => {
   };
 
   const handleNavigate = (id) => {
-    console.log('id', id);
     setShow(false);
+    dispatch(WatchLaterData(id, title, channel));
   };
 
-  const handleClicks = (id) => {
+  const handleClick = (id) => {
     navigate(`/watch/${id}`);
     dispatch(AddChanelId(id, title, channel));
   };
 
   return (
     <div>
-      <div className="videoCard" onClick={() => handleClicks(id)}>
+      <div className="videoCard" onClick={() => handleClick(id)}>
         <img className="VideoCard_image" src={image} alt="" />
         <div className="videoCard_info">
           <div className="videoCard_text">

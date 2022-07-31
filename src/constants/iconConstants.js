@@ -23,6 +23,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 export {
   MenuSharpIcon,
   SearchIcon,
@@ -42,4 +44,5 @@ export {
   MoreVertIcon,
   ClearIcon,
   WatchLaterOutlinedIcon,
+  DeleteOutlineIcon,
 };

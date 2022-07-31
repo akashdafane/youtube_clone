@@ -1,18 +1,34 @@
 import React from 'react';
+import HistoryVideoList from './historyVideoList';
 import { useSelector } from 'react-redux';
-import { VideoPlayer } from '../../components/index';
+import { useNavigate } from 'react-router-dom';
+import {
+  MoreVertIcon,
+  DeleteOutlineIcon
+} from '../../constants/iconConstants';
+import '../../styles/videos.css';
 
 const HistoryPage = () => {
   const items = useSelector((state) => state?.chanelId?.chanelId || []);
 
-  console.log('items', items.data);
+  let navigate = useNavigate();
+
+  const handleNavigation = (id) => {
+    navigate(`/watch/${id}`);
+  };
 
   return (
     <div>
-      <VideoPlayer />
       {items &&
-        items.map((v) => (
-          <VideoPlayer src={`https://www.youtube.com/embed/${v.data.id}`} />
+        items.map((value) => (
+          <HistoryVideoList
+            id={value?.data?.id}
+            title={value?.data?.title}
+            handleNavigation={handleNavigation}
+            icon={<MoreVertIcon />}
+            listIcon={<DeleteOutlineIcon />}
+            listItemName={'Watch Later'}
+          />
         ))}
     </div>
   );

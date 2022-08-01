@@ -1,47 +1,15 @@
-import React, { useState, useRef } from 'react';
-import { VideoPlayer, Popover } from '../../components';
-import {
-  MoreVertIcon,
-  DeleteOutlineIcon
-} from '../../constants/iconConstants';
+import React from 'react';
+import { MoreVertIcon, DeleteOutlineIcon } from '../../constants/iconConstants';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import WatchLaterVideoList from './watchLaterVideoList';
-import { useDispatch } from 'react-redux';
-import { removeWatchLater } from '../../actions/watchLater';
-
 import '../../styles/videos.css';
 
 const WatchLaterPage = () => {
-  const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
-  const [data, setData] = useState('');
-  const ref = useRef();
-
-  const dispatch = useDispatch();
-
-  const handleToggle = (event) => {
-    setShow(!show);
-    setTarget(event.target);
-  };
-
-  const handleNavigate = (d) => {
-    // dispatch(removeWatchLater(id));
-    setShow(false);
-    // dispatch(WatchLaterData(id, title, channel));
-  };
-
   const items = useSelector(
     (state) => state?.watchLaterData?.watchLaterData || [],
   );
 
-
-  let navigate = useNavigate();
-
-  const handleNavigation = (id) => {
-    setData(id)
-    navigate(`/watch/${id}`);
-  };
+  console.log('items', items)
 
   return (
     <div>
@@ -50,12 +18,7 @@ const WatchLaterPage = () => {
           <WatchLaterVideoList
             id={value?.data?.id}
             title={value?.data?.title}
-            handleNavigation={handleNavigation}
-            // handleToggle={handleToggle}
-            // show={show}
-            // target={target}
-            // ref={ref}
-            // handleNavigate={handleNavigate}
+            description={value?.data?.description}
             icon={<MoreVertIcon />}
             listIcon={<DeleteOutlineIcon />}
             listItemName={'Watch Later'}

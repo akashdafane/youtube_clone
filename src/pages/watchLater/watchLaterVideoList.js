@@ -1,40 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { VideoPlayer, Popover } from '../../components';
 import { removeWatchLater } from '../../actions/watchLater';
-import { useDispatch } from 'react-redux';
+import { useSetPopover } from '../../hooks/useSetPopover';
 import '../../styles/videos.css';
 
 const WatchLaterVideoList = ({
   id,
   title,
-  handleNavigation,
-  // handleToggle,
-  // ref,
-  // target,
-  // handleNavigate,
-  // show,
   icon,
   listIcon,
+  description,
 }) => {
-  const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
-  const ref = useRef(null);
+  const { handleToggle, ref, target, show, handleNavigate, handleClick } =
+  useSetPopover(removeWatchLater(id));
 
-  const dispatch = useDispatch();
-
-  const handleToggle = (event) => {
-    setShow(!show);
-    setTarget(event.target);
-  };
-
-  const handleNavigate = (id) => {
-    dispatch(removeWatchLater(id));
-    setShow(false);
-    // dispatch(WatchLaterData(id, title, channel));
-  };
   return (
     <div>
-      <div className="vid-card" onClick={() => handleNavigation(id)}>
+      <div className="vid-card" onClick={() => handleClick(id)}>
         <VideoPlayer
           className="img"
           src={`https://www.youtube.com/embed/${id}`}
@@ -44,7 +26,7 @@ const WatchLaterVideoList = ({
         <div className="title">
           {title}
           <div className="sub-title"> 27M views 1 year ago</div>
-          <div className="text">{'description'}</div>
+          <div className="text">{description}</div>
         </div>
         {/* <img src={MoreIcon} className="sip-menu-icon" alt="Sip" /> */}
       </div>

@@ -10,6 +10,7 @@ import {
 } from '../../constants/iconConstants';
 import '../../styles/header.css';
 import { constants } from '../../constants/constants';
+import SearchBar from '../../pages/searchbar/searchBar';
 
 const Header = () => {
   const { placeholder } = constants?.header || {};
@@ -24,8 +25,8 @@ const Header = () => {
         />
       </div>
       <div className="header_input">
-        <input type="text" placeholder={search} />
-        <SearchIcon className="header_searchButton" />
+        <SearchBar />
+        {/* <SearchIcon className="header_searchButton" /> */}
       </div>
       <div className="header_icons">
         <VideoCallIcon className="header_icon" />

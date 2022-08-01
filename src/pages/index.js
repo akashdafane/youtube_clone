@@ -4,5 +4,16 @@ import PageNotFound from './notFound/pageNotFound';
 import VideoCard from './videoCard/videoCardPage';
 import WatchLater from './watchLater/watchLaterPage';
 import WatchVideo from './watchVideo/watchVideoPage';
+import SearchBar from './searchbar/searchBar';
+import SearchResult from './searchResult/searchResultPage';
 
-export { Home, HistoryPage, PageNotFound, VideoCard, WatchLater, WatchVideo };
+export {
+  Home,
+  HistoryPage,
+  PageNotFound,
+  VideoCard,
+  WatchLater,
+  WatchVideo,
+  SearchBar,
+  SearchResult,
+};

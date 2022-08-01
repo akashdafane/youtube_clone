@@ -1,20 +1,19 @@
 import React, { useState, useRef } from 'react';
+import { VideoPlayer, Popover } from '../../components';
 import { useDispatch } from 'react-redux';
-import { AddChanelId } from '../../actions/addHistory';
 import { WatchLaterData } from '../../actions/watchLater';
-import { useNavigate } from 'react-router-dom';
-import { Popover } from '../../components';
 import {
   MoreVertIcon,
   WatchLaterOutlinedIcon,
 } from '../../constants/iconConstants';
+import '../../styles/videos.css';
 
-const VideoCardPage = ({ image, title, channel, views, timestamp, id }) => {
-  const dispatch = useDispatch();
-  let navigate = useNavigate();
+const Videos = ({ id, title, description, handleNavigation }) => {
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
+
+  const dispatch = useDispatch();
 
   const handleToggle = (event) => {
     setShow(!show);
@@ -23,26 +22,21 @@ const VideoCardPage = ({ image, title, channel, views, timestamp, id }) => {
 
   const handleNavigate = (id) => {
     setShow(false);
-    dispatch(WatchLaterData(id, title, channel));
+    dispatch(WatchLaterData(id, title));
   };
-
-  const handleClick = (id) => {
-    navigate(`/watch/${id}`);
-    dispatch(AddChanelId(id, title, channel));
-  };
-
   return (
     <div>
-      <div className="videoCard" onClick={() => handleClick(id)}>
-        <img className="VideoCard_image" src={image} alt="" />
-        <div className="videoCard_info">
-          <div className="videoCard_text">
-            <h4>{title}</h4>
-            <p>{channel}</p>
-            <p>
-              {views} . {timestamp}
-            </p>
-          </div>
+      <div className="vid-card" onClick={() => handleNavigation(id)}>
+        <VideoPlayer
+          className="img"
+          src={`https://www.youtube.com/embed/${id}`}
+          title={id}
+          allowFullScreen={true}
+        />
+        <div className="title">
+          {title}
+          <div className="sub-title"> 27M views 1 year ago</div>
+          <div className="text">{description}</div>
         </div>
       </div>
       <Popover
@@ -59,4 +53,4 @@ const VideoCardPage = ({ image, title, channel, views, timestamp, id }) => {
   );
 };
 
-export default VideoCardPage;
+export default Videos;

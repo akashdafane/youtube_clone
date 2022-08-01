@@ -6,6 +6,7 @@ import rootReducer, { initialState } from "./rootReducers";
 
 const isDev = process.env.NODE_ENV !== "production";
 
+
 const persistConfig = {
   key: "react_setup",
   storage,

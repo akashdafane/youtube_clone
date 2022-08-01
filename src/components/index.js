@@ -3,5 +3,17 @@ import Sidebar from './sidebar/sidebar';
 import VideoPlayer from './common/videoPlayer';
 import UserLayout from './common/userLayout';
 import Image from './common/image';
+import Button from './common/button';
+import Input from './common/input';
+import Popover from './common/popover';
 
-export { Header, Sidebar, VideoPlayer, UserLayout, Image };
+export {
+  Header,
+  Sidebar,
+  VideoPlayer,
+  UserLayout,
+  Image,
+  Button,
+  Input,
+  Popover,
+};

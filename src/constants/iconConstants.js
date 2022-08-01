@@ -17,6 +17,14 @@ import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
+import ClearIcon from '@mui/icons-material/Clear';
+
+import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
+
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 export {
   MenuSharpIcon,
   SearchIcon,
@@ -33,4 +41,8 @@ export {
   WatchLaterIcon,
   ThumbUpOffAltIcon,
   ExpandMoreIcon,
+  MoreVertIcon,
+  ClearIcon,
+  WatchLaterOutlinedIcon,
+  DeleteOutlineIcon,
 };

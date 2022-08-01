@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddChanelId } from '../../actions/addHistory';
+import { addHistory } from '../../actions/addHistory';
 import { WatchLaterData } from '../../actions/watchLater';
 import { useSetPopover } from '../../hooks/useSetPopover';
 import { Popover } from '../../components';
@@ -8,11 +8,19 @@ import {
   WatchLaterOutlinedIcon,
 } from '../../constants/iconConstants';
 
-const VideoCardPage = ({ image, title, channel, views, timestamp, id }) => {
+const VideoCardPage = ({
+  image,
+  title,
+  channel,
+  views,
+  timestamp,
+  id,
+  description,
+}) => {
   const { handleToggle, ref, target, show, handleNavigate, handleClick } =
     useSetPopover(
-      WatchLaterData(id, title, channel),
-      AddChanelId(id, title, channel),
+      WatchLaterData(id, title, channel, description),
+      addHistory(id, title, channel, description),
     );
 
   return (

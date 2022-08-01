@@ -9,8 +9,8 @@ const WatchLaterVideoList = ({
   title,
   icon,
   listIcon,
+  description,
 }) => {
-
   const { handleToggle, ref, target, show, handleNavigate, handleClick } =
   useSetPopover(removeWatchLater(id));
 
@@ -26,7 +26,7 @@ const WatchLaterVideoList = ({
         <div className="title">
           {title}
           <div className="sub-title"> 27M views 1 year ago</div>
-          <div className="text">{'description'}</div>
+          <div className="text">{description}</div>
         </div>
         {/* <img src={MoreIcon} className="sip-menu-icon" alt="Sip" /> */}
       </div>

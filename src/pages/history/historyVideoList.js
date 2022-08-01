@@ -4,13 +4,12 @@ import { removeHistory } from '../../actions/addHistory';
 import { useSetPopover } from '../../hooks/useSetPopover';
 import '../../styles/videos.css';
 
-const HistoryVideoList = ({ id, title, handleNavigation, icon, listIcon }) => {
-  const { handleToggle, ref, target, show, handleNavigate } = useSetPopover(
-    removeHistory(id),
-  );
+const HistoryVideoList = ({ id, title, icon, listIcon }) => {
+  const { handleToggle, ref, target, show, handleNavigate, handleWatchVideo } =
+    useSetPopover(removeHistory(id));
   return (
     <div>
-      <div className="vid-card" onClick={() => handleNavigation(id)}>
+      <div className="vid-card" onClick={() => handleWatchVideo(id)}>
         <VideoPlayer
           className="img"
           src={`https://www.youtube.com/embed/${id}`}
@@ -22,7 +21,6 @@ const HistoryVideoList = ({ id, title, handleNavigation, icon, listIcon }) => {
           <div className="sub-title"> 27M views 1 year ago</div>
           <div className="text">{'description'}</div>
         </div>
-        {/* <img src={MoreIcon} className="sip-menu-icon" alt="Sip" /> */}
       </div>
       <Popover
         handleToggle={handleToggle}

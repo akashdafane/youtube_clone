@@ -1,19 +1,10 @@
 import React from 'react';
 import '../../styles/homePage.css';
-import VideoCard from '../videoCard/videoCardPage';
+import VideoCard from './videoCardPage';
 // import { getSearchApi } from '../../apis/search';
 // import Axios from 'axios';
 import { items } from '../../constants/fackApi';
 import { Col } from 'react-bootstrap';
-
-import { AddChanelId } from '../../actions/addHistory';
-import { WatchLaterData } from '../../actions/watchLater';
-
-import { Popover } from '../../components';
-import {
-  MoreVertIcon,
-  WatchLaterOutlinedIcon,
-} from '../../constants/iconConstants';
 
 const Home = () => {
   // const { handleClick, handleClose, id, open, anchorEl } = useSetPopovers();
@@ -44,21 +35,12 @@ const Home = () => {
               <VideoCard
                 title={value?.snippet?.channelTitle}
                 id={value?.id?.videoId}
+                description={value?.snippet?.description}
                 views="5.5M Views"
                 timestamp={value?.snippet?.publishTime}
                 image={value?.snippet?.thumbnails?.medium?.url}
                 channel="demo"
               />
-              {/* <Popover
-                  handleToggle={handleToggle}
-                  show={show}
-                  target={target}
-                  ref={ref}
-                  handleNavigate={() => handleNavigate(value?.id?.videoId)}
-                  icon={<MoreVertIcon />}
-                  listIcon={<WatchLaterOutlinedIcon />}
-                  listItemName={'Watch Later'}
-                /> */}
             </Col>
           ))}
       </div>

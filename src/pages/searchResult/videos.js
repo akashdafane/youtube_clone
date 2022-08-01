@@ -2,7 +2,7 @@ import React from 'react';
 import { VideoPlayer, Popover } from '../../components';
 import { WatchLaterData } from '../../actions/watchLater';
 import { useSetPopover } from '../../hooks/useSetPopover';
-import { AddChanelId } from '../../actions/addHistory';
+import { addHistory } from '../../actions/addHistory';
 import {
   MoreVertIcon,
   WatchLaterOutlinedIcon,
@@ -11,7 +11,7 @@ import '../../styles/videos.css';
 
 const Videos = ({ id, title, description }) => {
   const { handleToggle, ref, target, show, handleNavigate, handleClick } =
-    useSetPopover(WatchLaterData(id, title), AddChanelId(id, title));
+    useSetPopover(WatchLaterData(id, title), addHistory(id, title));
 
   return (
     <div>

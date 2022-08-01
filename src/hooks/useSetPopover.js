@@ -27,6 +27,10 @@ const useSetPopover = (watchLater, addHistory) => {
     dispatch(addHistory);
   };
 
+  const handleWatchVideo = (id) => {
+    navigate(`/watch/${id}`);
+  }
+
   return {
     handleToggle,
     handleNavigate,
@@ -34,6 +38,7 @@ const useSetPopover = (watchLater, addHistory) => {
     show,
     ref,
     handleClick,
+    handleWatchVideo,
   };
 };
 

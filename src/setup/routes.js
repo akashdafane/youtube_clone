@@ -11,59 +11,46 @@ import {
 } from '../pages/index';
 
 const Routing = () => {
+  const routeMapper = [
+    {
+      path: '/',
+      element: <Home />,
+      exact: true,
+    },
+    {
+      path: '/watchLater',
+      element: <WatchLater />,
+      exact: true,
+    },
+    {
+      path: '/watch/:id',
+      element: <WatchVideo />,
+      exact: true,
+    },
+    {
+      path: '/search',
+      element: <SearchResult />,
+      exact: true,
+    },
+    {
+      path: '/history',
+      element: <HistoryPage />,
+      exact: true,
+    },
+    {
+      path: '*',
+      element: <PageNotFound />,
+      exact: true,
+    },
+  ];
+
+  const routeComponents = routeMapper.map(({ path, element }, key) => (
+    <Route path={path} key={key} element={<UserLayout>{element}</UserLayout>} />
+  ));
+
   return (
     <Router>
-      <Routes>
-        <Route path="*" element={<PageNotFound />} />
-        <Route
-          path="/"
-          element={
-            <UserLayout>
-              <Home />
-            </UserLayout>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <UserLayout>
-              <Home />
-            </UserLayout>
-          }
-        />
-        <Route
-          path="/watchLater"
-          element={
-            <UserLayout>
-              <WatchLater />
-            </UserLayout>
-          }
-        />
-        <Route
-          path="/watch/:id"
-          element={
-            <UserLayout>
-              <WatchVideo />
-            </UserLayout>
-          }
-        />
-         <Route
-          path="/search"
-          element={
-            <UserLayout>
-              <SearchResult />
-            </UserLayout>
-          }
-        />
-        <Route
-          path="/history"
-          element={
-            <UserLayout>
-              <HistoryPage />
-            </UserLayout>
-          }
-        />
-      </Routes>
+      <Routes>{routeComponents}</Routes>
     </Router>
   );
 };

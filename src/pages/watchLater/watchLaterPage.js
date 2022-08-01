@@ -9,6 +9,8 @@ const WatchLaterPage = () => {
     (state) => state?.watchLaterData?.watchLaterData || [],
   );
 
+  console.log('items', items)
+
   return (
     <div>
       {items &&
@@ -16,6 +18,7 @@ const WatchLaterPage = () => {
           <WatchLaterVideoList
             id={value?.data?.id}
             title={value?.data?.title}
+            description={value?.data?.description}
             icon={<MoreVertIcon />}
             listIcon={<DeleteOutlineIcon />}
             listItemName={'Watch Later'}

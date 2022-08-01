@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import AddChanelIdReducer from '../reducers/addHistoryReducer';
+import HistoryReducer from '../reducers/historyReducer';
 import SearchResultReducer from '../reducers/searchResult';
-import WatchLaterReducer from '../reducers/watchLater';
+import WatchLaterReducer from '../reducers/watchLaterReducer';
 
 const initialState = {
   // chanelId: '',
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const appReducer = combineReducers({
-  chanelId: AddChanelIdReducer,
+  historyData: HistoryReducer,
   watchLaterData: WatchLaterReducer,
   searchResult: SearchResultReducer,
 });

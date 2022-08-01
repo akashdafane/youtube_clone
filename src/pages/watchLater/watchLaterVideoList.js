@@ -1,40 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { VideoPlayer, Popover } from '../../components';
 import { removeWatchLater } from '../../actions/watchLater';
-import { useDispatch } from 'react-redux';
+import { useSetPopover } from '../../hooks/useSetPopover';
 import '../../styles/videos.css';
 
 const WatchLaterVideoList = ({
   id,
   title,
-  handleNavigation,
-  // handleToggle,
-  // ref,
-  // target,
-  // handleNavigate,
-  // show,
   icon,
   listIcon,
 }) => {
-  const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
-  const ref = useRef(null);
 
-  const dispatch = useDispatch();
+  const { handleToggle, ref, target, show, handleNavigate, handleClick } =
+  useSetPopover(removeWatchLater(id));
 
-  const handleToggle = (event) => {
-    setShow(!show);
-    setTarget(event.target);
-  };
-
-  const handleNavigate = (id) => {
-    dispatch(removeWatchLater(id));
-    setShow(false);
-    // dispatch(WatchLaterData(id, title, channel));
-  };
   return (
     <div>
-      <div className="vid-card" onClick={() => handleNavigation(id)}>
+      <div className="vid-card" onClick={() => handleClick(id)}>
         <VideoPlayer
           className="img"
           src={`https://www.youtube.com/embed/${id}`}

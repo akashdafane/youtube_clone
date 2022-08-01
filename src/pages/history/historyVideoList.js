@@ -1,26 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { VideoPlayer, Popover } from '../../components';
 import { removeHistory } from '../../actions/addHistory';
-import { useDispatch } from 'react-redux';
+import { useSetPopover } from '../../hooks/useSetPopover';
 import '../../styles/videos.css';
 
 const HistoryVideoList = ({ id, title, handleNavigation, icon, listIcon }) => {
-  const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
-  const ref = useRef(null);
-
-  const dispatch = useDispatch();
-
-  const handleToggle = (event) => {
-    setShow(!show);
-    setTarget(event.target);
-  };
-
-  const handleNavigate = (id) => {
-    dispatch(removeHistory(id));
-    setShow(false);
-    // dispatch(WatchLaterData(id, title, channel));
-  };
+  const { handleToggle, ref, target, show, handleNavigate } = useSetPopover(
+    removeHistory(id),
+  );
   return (
     <div>
       <div className="vid-card" onClick={() => handleNavigation(id)}>

@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { AddChanelId } from '../../actions/addHistory';
 import { WatchLaterData } from '../../actions/watchLater';
-import { useNavigate } from 'react-router-dom';
+import { useSetPopover } from '../../hooks/useSetPopover';
 import { Popover } from '../../components';
 import {
   MoreVertIcon,
@@ -10,26 +9,11 @@ import {
 } from '../../constants/iconConstants';
 
 const VideoCardPage = ({ image, title, channel, views, timestamp, id }) => {
-  const dispatch = useDispatch();
-  let navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
-  const ref = useRef(null);
-
-  const handleToggle = (event) => {
-    setShow(!show);
-    setTarget(event.target);
-  };
-
-  const handleNavigate = (id) => {
-    setShow(false);
-    dispatch(WatchLaterData(id, title, channel));
-  };
-
-  const handleClick = (id) => {
-    navigate(`/watch/${id}`);
-    dispatch(AddChanelId(id, title, channel));
-  };
+  const { handleToggle, ref, target, show, handleNavigate, handleClick } =
+    useSetPopover(
+      WatchLaterData(id, title, channel),
+      AddChanelId(id, title, channel),
+    );
 
   return (
     <div>

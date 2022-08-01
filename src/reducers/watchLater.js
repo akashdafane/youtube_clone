@@ -4,7 +4,7 @@ export const initialState = {
   watchLaterData: [],
 };
 
-const AddChanelIdReducer = (state = initialState, action) => {
+const WatchLaterReducer = (state = initialState, action) => {
   switch (action.type) {
     case WATCH_LATER: {
       return {
@@ -28,4 +28,4 @@ const AddChanelIdReducer = (state = initialState, action) => {
   }
 };
 
-export default AddChanelIdReducer;
+export default WatchLaterReducer;

@@ -14,9 +14,12 @@ import {
   ExpandMoreIcon,
 } from '../../constants/iconConstants';
 import { constants } from '../../constants/constants';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
   let navigate = useNavigate();
+
+  const isCollapse = useSelector((state) => state?.sidebar?.isCollapse);
 
   const { title } = constants?.sidebar || {};
   const {
@@ -32,7 +35,7 @@ const Sidebar = () => {
   } = title;
 
   return (
-    <div className="sidebar">
+    <div className={isCollapse ? 'sidebar' : 'sidebar closed'}>
       <div onClick={() => navigate('/')}>
         <SidebarRow selected Icons={Home} title={home} />
       </div>

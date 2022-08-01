@@ -9,7 +9,7 @@ const HistoryPage = () => {
 
   return (
     <div>
-      {items &&
+      {items && items?.length > 0 &&
         items.map((value) => (
           <HistoryVideoList
             id={value?.data?.id}

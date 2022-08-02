@@ -17,4 +17,9 @@ export const constants = {
       showMore: 'Show More',
     },
   },
+  popover:{
+    removeItemLabel:'Remove from Watch Later',
+    removeHistoryLabel:'Remove from history',
+    watchLaterLabel:'Save to Watch Later',
+  }
 };

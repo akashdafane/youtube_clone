@@ -9,7 +9,7 @@ import {
 } from '../../constants/iconConstants';
 import '../../styles/videos.css';
 
-const Videos = ({ id, title, description }) => {
+const Videos = ({ id, title, description, watchLaterLabel }) => {
   const { handleToggle, ref, target, show, handleNavigate, handleClick } =
     useSetPopover(WatchLaterData(id, title), addHistory(id, title));
 
@@ -36,7 +36,7 @@ const Videos = ({ id, title, description }) => {
         handleNavigate={() => handleNavigate(id)}
         icon={<MoreVertIcon />}
         listIcon={<WatchLaterOutlinedIcon />}
-        listItemName={'Watch Later'}
+        listItemName={watchLaterLabel}
       />
     </div>
   );

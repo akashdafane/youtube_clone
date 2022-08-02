@@ -1,29 +1,19 @@
 import React from 'react';
 import { Image } from '../index';
+import { sidebar } from '../../actions/sidebar';
+import { useDispatch } from 'react-redux';
+import SearchBar from '../../pages/searchbar/searchBar';
 import {
   AccountCircleIcon,
   AppsIcon,
   MenuSharpIcon,
   NotificationsIcon,
-  SearchIcon,
   VideoCallIcon,
 } from '../../constants/iconConstants';
-import { sidebar } from '../../actions/sidebar'
-import { useDispatch } from 'react-redux';
 import '../../styles/header.css';
-import { constants } from '../../constants/constants';
-import SearchBar from '../../pages/searchbar/searchBar';
-
 
 const Header = () => {
-  const { placeholder } = constants?.header || {};
-  const { search } = placeholder;
-
-  const dispatch = useDispatch()
-
-  const handleDemo = () => {
-    console.log('first');
-  };
+  const dispatch = useDispatch();
 
   return (
     <div className="main_header">
@@ -36,7 +26,6 @@ const Header = () => {
       </div>
       <div className="header_input">
         <SearchBar />
-        {/* <SearchIcon className="header_searchButton" /> */}
       </div>
       <div className="header_icons">
         <VideoCallIcon className="header_icon" />

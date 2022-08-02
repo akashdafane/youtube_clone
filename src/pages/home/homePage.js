@@ -1,29 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/homePage.css';
 import VideoCard from './videoCardPage';
-// import { getSearchApi } from '../../apis/search';
-// import Axios from 'axios';
+import { getListResult } from '../../apis/searchApi';
 import { items } from '../../constants/fackApi';
 import { Col } from 'react-bootstrap';
+import { constants } from '../../constants/constants';
 
 const Home = () => {
-  // const { handleClick, handleClose, id, open, anchorEl } = useSetPopovers();
-  // WatchLaterData(id, title, channel),
-  // AddChanelId(id, title, channel),
-  // const [data, setData] = useState({})
+  // const [data, setData] = useState({});
+
+  const { popover } = constants || {};
+  const { watchLaterLabel } = popover || {};
 
   // useEffect(() => {
-  //   getApiData()
-  // },[])
-
-  // let url = 'https://youtube.googleapis.com/youtube/v3/search?key=AIzaSyDRv_yfzl_jtNZhphEF_w6QIfHUrIRwOU0&part=snippet&maxResults=50'
+  //   getApiData();
+  // }, []);
 
   // const getApiData = () => {
-  //   Axios.get(url)
-  //   .then((res) => {
-  //     setData(res?.data?.items)
-  //   })
-  // }
+  //   getListResult().then((res) => {
+  //     setData(res?.data?.items);
+  //   });
+  // };
 
   return (
     <div className="MainVideoDashBoard">
@@ -39,6 +36,7 @@ const Home = () => {
                 views="5.5M Views"
                 timestamp={value?.snippet?.publishTime}
                 image={value?.snippet?.thumbnails?.medium?.url}
+                watchLaterLabel={watchLaterLabel}
                 channel="demo"
               />
             </Col>

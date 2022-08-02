@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSearchResult } from '../../actions/searchResult';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/index';
-import { SearchIcon } from '../../constants/iconConstants';
+import { SearchIcon, ClearIcon } from '../../constants/iconConstants';
+import { constants } from '../../constants/constants';
 import '../../styles/searchBar.css';
 
 const SearchBar = () => {
@@ -12,6 +13,9 @@ const SearchBar = () => {
   );
 
   const [value, setValue] = useState('');
+
+  const { placeholder } = constants?.header || {};
+  const { search } = placeholder;
 
   let navigate = useNavigate();
 
@@ -34,11 +38,16 @@ const SearchBar = () => {
     }
   };
 
+  const onSearchClear = () => {
+    setValue('')
+  }
+
   return (
     <div className="App">
       <div className="search-container">
         <div className="search-inner">
-          <Input type="text" isControlled value={value} onChange={onChange} />
+          <Input type="text" isControlled value={value} onChange={onChange} placeholder={search}/>
+          <ClearIcon onClick={() => onSearchClear()}/>
           <div onClick={() => onSearch(value)}>
             <SearchIcon />
           </div>

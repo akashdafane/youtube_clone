@@ -1,25 +1,29 @@
 import React from 'react';
-import { VideoPlayer, Popover } from '../../components';
+import { Popover, Image } from '../../components';
 import { removeHistory } from '../../actions/addHistory';
 import { useSetPopover } from '../../hooks/useSetPopover';
 import '../../styles/videos.css';
 
-const HistoryVideoList = ({ id, title, icon, listIcon }) => {
+const HistoryVideoList = ({
+  id,
+  title,
+  icon,
+  listIcon,
+  image,
+  removeItemLabel,
+  description,
+}) => {
   const { handleToggle, ref, target, show, handleNavigate, handleWatchVideo } =
     useSetPopover(removeHistory(id));
+
   return (
-    <div>
-      <div className="vid-card" onClick={() => handleWatchVideo(id)}>
-        <VideoPlayer
-          className="img"
-          src={`https://www.youtube.com/embed/${id}`}
-          title={id}
-          allowFullScreen={true}
-        />
+    <div className="vid-card">
+      <div className="d-flex" onClick={() => handleWatchVideo(id)}>
+        <Image className="img" src={image} />
         <div className="title">
           {title}
           <div className="sub-title"> 27M views 1 year ago</div>
-          <div className="text">{'description'}</div>
+          <div className="text">{description}</div>
         </div>
       </div>
       <Popover
@@ -30,7 +34,7 @@ const HistoryVideoList = ({ id, title, icon, listIcon }) => {
         handleNavigate={() => handleNavigate(id)}
         icon={icon}
         listIcon={listIcon}
-        listItemName={'Remove from Watch Later'}
+        listItemName={removeItemLabel}
       />
     </div>
   );

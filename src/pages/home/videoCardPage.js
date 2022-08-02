@@ -2,7 +2,7 @@ import React from 'react';
 import { addHistory } from '../../actions/addHistory';
 import { WatchLaterData } from '../../actions/watchLater';
 import { useSetPopover } from '../../hooks/useSetPopover';
-import { Popover } from '../../components';
+import { Popover, Image } from '../../components';
 import {
   MoreVertIcon,
   WatchLaterOutlinedIcon,
@@ -16,17 +16,18 @@ const VideoCardPage = ({
   timestamp,
   id,
   description,
+  watchLaterLabel,
 }) => {
   const { handleToggle, ref, target, show, handleNavigate, handleClick } =
     useSetPopover(
-      WatchLaterData(id, title, channel, description),
-      addHistory(id, title, channel, description),
+      WatchLaterData(id, title, channel, description, image),
+      addHistory(id, title, channel, description, image),
     );
 
   return (
     <div>
       <div className="videoCard" onClick={() => handleClick(id)}>
-        <img className="VideoCard_image" src={image} alt="" />
+        <Image className="VideoCard_image" src={image} />
         <div className="videoCard_info">
           <div className="videoCard_text">
             <h4>{title}</h4>
@@ -45,7 +46,7 @@ const VideoCardPage = ({
         handleNavigate={() => handleNavigate(id)}
         icon={<MoreVertIcon />}
         listIcon={<WatchLaterOutlinedIcon />}
-        listItemName={'Watch Later'}
+        listItemName={watchLaterLabel}
       />
     </div>
   );

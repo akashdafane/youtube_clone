@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/homePage.css';
-import VideoCard from './videoCardPage';
-import { getListResult } from '../../apis/searchApi';
-import { items } from '../../constants/fackApi';
-import { Col } from 'react-bootstrap';
 import { constants } from '../../constants/constants';
+import { getListResult } from '../../apis/searchApi';
+import { Col } from 'react-bootstrap';
+import VideoCard from './videoCardPage';
+import '../../styles/homePage.css';
 
 const Home = () => {
-  // const [data, setData] = useState({});
+  const [data, setData] = useState({});
 
   const { popover } = constants || {};
   const { watchLaterLabel } = popover || {};
 
-  // useEffect(() => {
-  //   getApiData();
-  // }, []);
+  useEffect(() => {
+    getApiData();
+  }, []);
 
-  // const getApiData = () => {
-  //   getListResult().then((res) => {
-  //     setData(res?.data?.items);
-  //   });
-  // };
+  const getApiData = () => {
+    getListResult().then((res) => {
+      setData(res?.data?.items);
+    });
+  };
 
   return (
     <div className="MainVideoDashBoard">
       <div className="MainVideoDashBoard_videos row">
-        {items &&
-          items?.length > 0 &&
-          items.map((value, index) => (
+        {data &&
+          data?.length > 0 &&
+          data.map((value, index) => (
             <Col md="2" key={index}>
               <VideoCard
                 title={value?.snippet?.channelTitle}

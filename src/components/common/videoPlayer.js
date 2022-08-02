@@ -1,9 +1,22 @@
 import React from 'react';
 
-const VideoPlayer = ({ width, height, src, title, allowFullScreen, className, onClick }) => {
+const VideoPlayer = ({
+  width,
+  height,
+  src,
+  title,
+  allowFullScreen,
+  className,
+}) => {
   return (
     <div className={className}>
-      <iframe onClick={onClick} width={width} height={height} src={src} title={title} allowFullScreen={allowFullScreen}/>
+      <iframe
+        width={width}
+        height={height}
+        src={src}
+        title={title}
+        allowFullScreen={allowFullScreen}
+      />
     </div>
   );
 };

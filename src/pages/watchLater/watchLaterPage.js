@@ -13,6 +13,8 @@ const WatchLaterPage = () => {
   const { popover } = constants || {};
   const { watchLaterLabel } = popover || {};
 
+  console.log('items', items)
+
   return (
     <div>
       {items &&

@@ -29,7 +29,7 @@ const useSetPopover = (watchLater, addHistory) => {
 
   const handleWatchVideo = (id) => {
     navigate(`/watch/${id}`);
-  }
+  };
 
   return {
     handleToggle,

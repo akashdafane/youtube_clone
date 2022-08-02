@@ -22,6 +22,8 @@ const SearchResultPage = () => {
               title={value?.snippet?.title}
               description={value?.snippet?.description}
               watchLaterLabel={watchLaterLabel}
+              image={value?.snippet?.thumbnails?.medium?.url}
+              channel={value?.snippet?.channelTitle}
             />
           </>
         ))}

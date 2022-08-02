@@ -12,7 +12,7 @@ const HistoryReducer = (state = initialState, action) => {
       };
     }
     case REMOVE_HISTORY: {
-      const newList = state?.historyData.filter(
+      const newList = state?.historyData?.filter(
         (e) => e?.data?.id !== action?.id,
       );
       return {

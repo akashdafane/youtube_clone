@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/index';
 import { SearchIcon, ClearIcon } from '../../constants/iconConstants';
 import { constants } from '../../constants/constants';
+import { filterSearchOptions } from '../../utility/others';
 import '../../styles/searchBar.css';
 
 const SearchBar = () => {
@@ -39,39 +40,34 @@ const SearchBar = () => {
   };
 
   const onSearchClear = () => {
-    setValue('')
-  }
+    setValue('');
+  };
 
   return (
     <div className="App">
       <div className="search-container">
         <div className="search-inner">
-          <Input type="text" isControlled value={value} onChange={onChange} placeholder={search}/>
-          <ClearIcon onClick={() => onSearchClear()}/>
+          <Input
+            type="text"
+            isControlled
+            value={value}
+            onChange={onChange}
+            placeholder={search}
+          />
+          <ClearIcon onClick={() => onSearchClear()} />
           <div onClick={() => onSearch(value)}>
             <SearchIcon />
           </div>
         </div>
         <div className="dropdown">
-          {items
-            .filter((item) => {
-              const searchTerm = value?.toLowerCase();
-              const fullName = item?.snippet?.title?.toLowerCase();
-              return (
-                searchTerm &&
-                fullName?.startsWith(searchTerm) &&
-                fullName !== searchTerm
-              );
-            })
-            .slice(0, 10)
-            .map((item) => (
-              <div
-                onClick={() => onSearch(item?.snippet?.title)}
-                className="dropdown-row"
-                key={item?.snippet?.title}>
-                {item?.snippet?.title}
-              </div>
-            ))}
+          {filterSearchOptions(items, value).map((item) => (
+            <div
+              onClick={() => onSearch(item?.snippet?.title)}
+              className="dropdown-row"
+              key={item?.snippet?.title}>
+              {item?.snippet?.title}
+            </div>
+          ))}
         </div>
       </div>
     </div>

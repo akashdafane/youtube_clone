@@ -10,13 +10,13 @@ const WatchLaterReducer = (state = initialState, action) => {
       return {
         watchLaterData: [
           ...state.watchLaterData,
-          { data: action.payload } || [],
+          { data: action?.payload } || [],
         ],
       };
     }
     case REMOVE_WATCH_LATER: {
       const newList = state.watchLaterData.filter(
-        (e) => e.data.id !== action.id,
+        (e) => e?.data?.id !== action.id,
       );
       return {
         watchLaterData: newList,

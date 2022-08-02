@@ -17,11 +17,9 @@ import { constants } from '../../constants/constants';
 import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
-  let navigate = useNavigate();
-
   const isCollapse = useSelector((state) => state?.sidebar?.isCollapse);
-
   const { title } = constants?.sidebar || {};
+  let navigate = useNavigate();
   const {
     home,
     history,
@@ -46,7 +44,6 @@ const Sidebar = () => {
       <div onClick={() => navigate('/history')}>
         <SidebarRow Icons={HistoryIcon} title={history} />
       </div>
-
       <SidebarRow Icons={OnDemandVideoIcon} title={yourVideos} />
       <div onClick={() => navigate('/watchLater')}>
         <SidebarRow Icons={WatchLaterIcon} title={watchLater} />

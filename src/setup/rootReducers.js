@@ -5,9 +5,7 @@ import WatchLaterReducer from '../reducers/watchLaterReducer';
 import SidebarReducer from '../reducers/sidebarReducer';
 
 const initialState = {
-  // chanelId: '',
   searchResult: '',
-  // sidebar: { isCollapsed: false, isVisible: false },
 };
 
 const appReducer = combineReducers({

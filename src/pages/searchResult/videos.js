@@ -3,22 +3,33 @@ import { VideoPlayer, Popover } from '../../components';
 import { WatchLaterData } from '../../actions/watchLater';
 import { useSetPopover } from '../../hooks/useSetPopover';
 import { addHistory } from '../../actions/addHistory';
+import { getUrl } from '../../utility/others';
 import {
   MoreVertIcon,
   WatchLaterOutlinedIcon,
 } from '../../constants/iconConstants';
 import '../../styles/videos.css';
 
-const Videos = ({ id, title, description }) => {
+const Videos = ({
+  id,
+  title,
+  channel,
+  description,
+  watchLaterLabel,
+  image,
+}) => {
   const { handleToggle, ref, target, show, handleNavigate, handleClick } =
-    useSetPopover(WatchLaterData(id, title), addHistory(id, title));
+    useSetPopover(
+      WatchLaterData(id, title, channel, description, image),
+      addHistory(id, title, channel, description, image),
+    );
 
   return (
-    <div>
-      <div className="vid-card" onClick={() => handleClick(id)}>
+    <div className="vid-card">
+      <div className="d-flex" onClick={() => handleClick(id)}>
         <VideoPlayer
           className="img"
-          src={`https://www.youtube.com/embed/${id}`}
+          src={getUrl(id)}
           title={id}
           allowFullScreen={true}
         />
@@ -36,7 +47,7 @@ const Videos = ({ id, title, description }) => {
         handleNavigate={() => handleNavigate(id)}
         icon={<MoreVertIcon />}
         listIcon={<WatchLaterOutlinedIcon />}
-        listItemName={'Watch Later'}
+        listItemName={watchLaterLabel}
       />
     </div>
   );

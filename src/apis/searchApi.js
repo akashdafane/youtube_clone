@@ -7,3 +7,7 @@ export const getSearchResults = (body) => {
     },
   });
 };
+
+export const getListResult = () => {
+  return client.get('/search');
+};

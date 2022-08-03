@@ -5,6 +5,7 @@ import VideoCallIcon from '@mui/icons-material/VideoCall';
 import AppsIcon from '@mui/icons-material/Apps';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ClearIcon from '@mui/icons-material/Clear';
 
 // this icons are used in sidebar
 import Home from '@mui/icons-material/Home';
@@ -18,8 +19,8 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-import ClearIcon from '@mui/icons-material/Clear';
+import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export {
   MenuSharpIcon,
@@ -39,4 +40,6 @@ export {
   ExpandMoreIcon,
   MoreVertIcon,
   ClearIcon,
+  WatchLaterOutlinedIcon,
+  DeleteOutlineIcon,
 };

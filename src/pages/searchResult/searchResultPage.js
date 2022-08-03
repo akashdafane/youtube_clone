@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { constants } from '../../constants/constants';
 import Videos from './videos';
 
 const SearchResultPage = () => {
@@ -8,23 +8,24 @@ const SearchResultPage = () => {
     (state) => state?.searchResult?.searchResults || [],
   );
 
-  let navigate = useNavigate();
-
-  const handleNavigation = (id) => {
-    navigate(`/watch/${id}`);
-  };
+  const { popover } = constants || {};
+  const { watchLaterLabel } = popover || {};
 
   return (
     <div>
       {result &&
         result?.length > 0 &&
         result.map((value) => (
-          <Videos
-            handleNavigation={handleNavigation}
-            id={value?.id?.videoId}
-            title={value?.snippet?.title}
-            description={value?.snippet?.description}
-          />
+          <>
+            <Videos
+              id={value?.id?.videoId}
+              title={value?.snippet?.title}
+              description={value?.snippet?.description}
+              watchLaterLabel={watchLaterLabel}
+              image={value?.snippet?.thumbnails?.medium?.url}
+              channel={value?.snippet?.channelTitle}
+            />
+          </>
         ))}
     </div>
   );

@@ -1,8 +1,16 @@
-export const CHANEL_ID = 'CHANEL_ID';
+export const ADD_HISTORY = 'ADD_HISTORY';
+export const REMOVE_HISTORY = 'REMOVE_HISTORY';
 
-export const AddChanelId = (id) => (dispatch) => {
+export const addHistory = (id, title, channel, description, image) => (dispatch) => {
   return dispatch({
-    type: CHANEL_ID,
-    payload: id,
+    type: ADD_HISTORY,
+    payload: { id, title, channel, description, image },
+  });
+};
+
+export const removeHistory = (id) => (dispatch) => {
+  return dispatch({
+    type: REMOVE_HISTORY,
+    id: id,
   });
 };

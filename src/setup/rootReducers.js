@@ -1,19 +1,18 @@
 import { combineReducers } from 'redux';
-import CountReducer from '../reducers/countReducer';
-import AddChanelIdReducer from '../reducers/addHistoryReducer';
+import HistoryReducer from '../reducers/historyReducer';
 import SearchResultReducer from '../reducers/searchResult';
+import WatchLaterReducer from '../reducers/watchLaterReducer';
+import SidebarReducer from '../reducers/sidebarReducer';
 
 const initialState = {
-  count: '',
-  chanelId: '',
-  searchResult:''
-  // sidebar: { isCollapsed: false, isVisible: false },
+  searchResult: '',
 };
 
 const appReducer = combineReducers({
-  count: CountReducer,
-  chanelId: AddChanelIdReducer,
+  historyData: HistoryReducer,
+  watchLaterData: WatchLaterReducer,
   searchResult: SearchResultReducer,
+  sidebar: SidebarReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -1,19 +1,35 @@
 import React from 'react';
-import { IncrementCount, DecrementCount } from '../../actions/countAction';
-import { useDispatch, useSelector } from 'react-redux';
+import { MoreVertIcon, DeleteOutlineIcon } from '../../constants/iconConstants';
+import { constants } from '../../constants/constants';
+import { useSelector } from 'react-redux';
+import WatchLaterVideoList from './watchLaterVideoList';
+import '../../styles/videos.css';
 
 const WatchLaterPage = () => {
-  const count = useSelector((state) => state?.count);
-  const dispatch = useDispatch();
+  const items = useSelector(
+    (state) => state?.watchLaterData?.watchLaterData || [],
+  );
+
+  const { popover } = constants || {};
+  const { watchLaterLabel } = popover || {};
+
+  console.log('items', items)
+
   return (
     <div>
-      <button type="button" onClick={() => dispatch(IncrementCount())}>
-        +
-      </button>
-      <h1>{count}</h1>
-      <button type="button" onClick={() => dispatch(DecrementCount())}>
-        -
-      </button>
+      {items &&
+        items.map((value) => (
+          <WatchLaterVideoList
+            id={value?.data?.id}
+            title={value?.data?.title}
+            description={value?.data?.description}
+            icon={<MoreVertIcon />}
+            listIcon={<DeleteOutlineIcon />}
+            image={value?.data?.image}
+            channel={value?.data?.channel}
+            watchLaterLabel={watchLaterLabel}
+          />
+        ))}
     </div>
   );
 };
